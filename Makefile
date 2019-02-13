@@ -6,7 +6,7 @@
 #    By: llenotre <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/13 17:11:46 by llenotre          #+#    #+#              #
-#    Updated: 2019/02/13 18:50:13 by llenotre         ###   ########.fr        #
+#    Updated: 2019/02/13 19:07:56 by llenotre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,18 @@ OBJ := $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 LIBFT = libft/libft.a
 MINILIBX = minilibx/libmlx.a
 
+LINKS = -lmlx -framework OpenGL -framework AppKit
+
 all: $(NAME) tags
 
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJ_DIRS) $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MINILIBX)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(MINILIBX) $(LINKS)
 
 $(LIBFT):
 	make -C libft/
+
+$(MINILIBX):
+	make -C minilibx/
 
 $(OBJ_DIRS):
 	mkdir -p $(OBJ_DIRS)
@@ -52,11 +57,13 @@ count:
 clean:
 	rm -rf $(OBJ_DIR)
 	make clean -C libft/
+	make clean -C minilibx/
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f tags
 	make fclean -C libft/
+	make clean -C minilibx/
 
 re: fclean all
 

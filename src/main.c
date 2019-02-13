@@ -6,7 +6,7 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:15:38 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/13 18:41:05 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/13 19:09:32 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		main(int argc, char **argv)
 		return (-1); // TODO Error message
 	wireframe = read_wireframe(*argv);
 	open_window();
+	// TODO Do a while to keep open?
 	draw_wireframe(wireframe);
 	ft_lstdel((t_list **)&wireframe, del);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:12:45 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/13 18:44:11 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/13 19:03:53 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
 # include "../minilibx/mlx.h"
+
+# define WIN_WIDTH	1024
+# define WIN_HEIGHT	768
 
 typedef struct	s_point
 {

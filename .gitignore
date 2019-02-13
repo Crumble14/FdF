@@ -3,3 +3,7 @@
 
 fdf
 tags
+
+.DS_Store
+
+*.fdf
