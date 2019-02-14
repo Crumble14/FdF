@@ -6,7 +6,7 @@
 #    By: llenotre <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/13 17:11:46 by llenotre          #+#    #+#              #
-#    Updated: 2019/02/13 19:07:56 by llenotre         ###   ########.fr        #
+#    Updated: 2019/02/14 14:03:27 by llenotre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ SRC_DIR = src/
 DIRS := $(shell find src/ -type d)
 SRC =	src/draw.c\
 		src/main.c\
-		src/window.c\
 		src/wireframe.c
 HDR =	src/fdf.h
 
