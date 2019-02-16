@@ -43,6 +43,25 @@ void		join_wireframes(t_wireframe **w1, t_wireframe *w2, int axis)
 	}
 }
 
+void		transform_wireframe(t_wireframe *w,
+	t_point (*f)(const t_point *p))
+{
+	t_wireframe *n;
+
+	if (!f)
+		return ;
+	while (w)
+	{
+		n = w;
+		while (n)
+		{
+			n->point = f(&n->point);
+			n = n->x_next;
+		}
+		w = w->y_next;
+	}
+}
+
 void		free_wireframe(const t_wireframe *w)
 {
 	const t_wireframe *n;
@@ -53,7 +72,7 @@ void		free_wireframe(const t_wireframe *w)
 		while (n)
 		{
 			free((void *)n);
-			n = n->x_next;
+			n = n->x_next; // Accessed to freeed memory
 		}
 		n = w->y_next;
 		free((void *)w);

@@ -57,7 +57,7 @@ static t_wireframe	*handle_line(const char *line, int y)
 	return (w);
 }
 
-const t_wireframe	*read_wireframe(const char *file)
+t_wireframe			*read_wireframe(const char *file)
 {
 	int			fd;
 	char		*line;

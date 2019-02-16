@@ -29,9 +29,6 @@
 
 # define POINT_GAP	30
 
-# define ISOMETRIC_ALPHA	0.60996413
-# define ISOMETRIC_BETA		0.78539816
-
 typedef enum	e_proj_tyoe
 {
 	ISOMETRIC = 0
@@ -61,20 +58,24 @@ typedef struct	s_line
 
 typedef struct	s_wireframe
 {
-	t_point point;
+	t_point				point;
 
-	struct s_wireframe *x_next;
-	struct s_wireframe *y_next;
+	struct s_wireframe	*x_next;
+	struct s_wireframe	*y_next;
 }				t_wireframe;
 
-t_wireframe			*create_wireframe(t_point *p);
-void				join_wireframes(t_wireframe **w1, t_wireframe *w2,
+t_wireframe		*create_wireframe(t_point *p);
+void			join_wireframes(t_wireframe **w1, t_wireframe *w2,
 	int axis);
-void				free_wireframe(const t_wireframe *w);
+void			transform_wireframe(t_wireframe *w,
+	t_point (*f)(const t_point *p));
+void			free_wireframe(const t_wireframe *w);
 
-const t_wireframe	*read_wireframe(const char *file);
+t_wireframe		*read_wireframe(const char *file);
 
-void				draw_line(t_mlx_info *mlx, t_line line);
-void				draw_wireframe(t_mlx_info *mlx, const t_wireframe *w);
+t_point			isometric_projection(const t_point *p);
+
+void			draw_line(t_mlx_info *mlx, t_line line);
+void			draw_wireframe(t_mlx_info *mlx, const t_wireframe *w);
 
 #endif

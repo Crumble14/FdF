@@ -33,22 +33,17 @@ static void			close_window(t_mlx_info *info)
 	free((void *)info);
 }
 
-static void			del(void *content, size_t content_size)
-{
-	free((void *)content);
-	(void)content_size;
-}
-
 int					main(int argc, char **argv)
 {
-	const t_wireframe	*wireframe;
-	t_mlx_info			*info;
+	t_wireframe	*wireframe;
+	t_mlx_info	*info;
 
 	--argc;
 	++argv;
 	if (argc <= 0)
 		return (-1); // TODO Error message
 	wireframe = read_wireframe(*argv);
+	transform_wireframe(wireframe, isometric_projection);
 	if (!(info = open_window()))
 		return (-1); // TODO Error message
 	while (TRUE)
@@ -58,6 +53,6 @@ int					main(int argc, char **argv)
 		draw_wireframe(info, wireframe);
 	}
 	close_window(info);
-	ft_lstdel((t_list **)&wireframe, del);
+	free_wireframe(wireframe);
 	return (0);
 }
