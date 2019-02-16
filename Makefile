@@ -17,7 +17,9 @@ CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src/
 DIRS := $(shell find src/ -type d)
 SRC =	src/draw.c\
+		src/file.c\
 		src/main.c\
+		src/projection.c\
 		src/wireframe.c
 HDR =	src/fdf.h
 
@@ -26,9 +28,9 @@ OBJ_DIRS := $(patsubst $(SRC_DIR)%,$(OBJ_DIR)%,$(DIRS))
 OBJ := $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 
 LIBFT = libft/libft.a
-MINILIBX = minilibx/libmlx.a
+MINILIBX = minilibx_linux/libmlx.a
 
-LINKS = -lmlx -framework OpenGL -framework AppKit
+LINKS = -lGL -lX11 -lXext # -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME) tags
 
@@ -39,7 +41,7 @@ $(LIBFT):
 	make -C libft/
 
 $(MINILIBX):
-	make -C minilibx/
+	make -C minilibx_linux/
 
 $(OBJ_DIRS):
 	mkdir -p $(OBJ_DIRS)
@@ -56,13 +58,13 @@ count:
 clean:
 	rm -rf $(OBJ_DIR)
 	make clean -C libft/
-	make clean -C minilibx/
+	make clean -C minilibx_linux/
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f tags
 	make fclean -C libft/
-	make clean -C minilibx/
+	make clean -C minilibx_linux/
 
 re: fclean all
 

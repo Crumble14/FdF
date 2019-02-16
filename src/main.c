@@ -19,11 +19,11 @@ static t_mlx_info	*open_window(void)
 
 	if (!(info = (t_mlx_info *)malloc(sizeof(t_mlx_info))))
 		return (NULL);
+	ft_bzero(info, sizeof(t_mlx_info));
 	if (!(info->ptr = mlx_init()))
 		return (NULL);
 	if (!(info->win = mlx_new_window(info->ptr, WIN_WIDTH, WIN_HEIGHT, "FdF")))
 		return (NULL);
-	// TODO
 	return (info);
 }
 
@@ -41,8 +41,8 @@ static void			del(void *content, size_t content_size)
 
 int					main(int argc, char **argv)
 {
-	const t_list	*wireframe;
-	t_mlx_info		*info;
+	const t_wireframe	*wireframe;
+	t_mlx_info			*info;
 
 	--argc;
 	++argv;
@@ -55,16 +55,7 @@ int					main(int argc, char **argv)
 	{
 		//mlx_clear_window(info->ptr, info->win);
 		// TODO Handle events
-		// TODO draw_wireframe(info, wireframe);
-		t_point test1;
-		test1.x = 50;
-		test1.y = 50;
-
-		t_point test2;
-		test2.x = 50;
-		test2.y = 60;
-
-		draw_line(info, test1, test2);
+		draw_wireframe(info, wireframe);
 	}
 	close_window(info);
 	ft_lstdel((t_list **)&wireframe, del);
