@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 static t_mlx_info	*open_window(void)
 {
@@ -24,12 +23,15 @@ static t_mlx_info	*open_window(void)
 		return (NULL);
 	if (!(info->win = mlx_new_window(info->ptr, WIN_WIDTH, WIN_HEIGHT, "FdF")))
 		return (NULL);
+	info->proj = isometric_projection;
+	info->zoom = 1;
 	return (info);
 }
 
 static void			close_window(t_mlx_info *info)
 {
 	mlx_destroy_window(info->ptr, info->win);
+	free_wireframe(info->wireframe);
 	free((void *)info);
 }
 
@@ -40,19 +42,14 @@ int					main(int argc, char **argv)
 
 	--argc;
 	++argv;
-	if (argc <= 0)
-		return (-1); // TODO Error message
-	wireframe = read_wireframe(*argv);
-	transform_wireframe(wireframe, isometric_projection);
-	if (!(info = open_window()))
-		return (-1); // TODO Error message
-	while (TRUE)
-	{
-		//mlx_clear_window(info->ptr, info->win);
-		// TODO Handle events
-		draw_wireframe(info, wireframe);
-	}
+	if (argc <= 0 || !(wireframe = read_wireframe(*argv))
+		|| !(info = open_window()))
+		return (0);
+	info->wireframe = wireframe;
+	set_wireframe_color(info->wireframe);
+	draw_wireframe(info, info->wireframe);
+	mlx_key_hook(info->win, key_event, info);
+	mlx_loop(info->ptr);
 	close_window(info);
-	free_wireframe(wireframe);
 	return (0);
 }

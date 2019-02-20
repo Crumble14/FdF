@@ -14,6 +14,7 @@
 # define FDF_H
 
 # include <fcntl.h>
+# include <math.h>
 # include <stdint.h>
 
 # include "../libft/libft.h"
@@ -27,27 +28,15 @@
 # define WIN_WIDTH	1024
 # define WIN_HEIGHT	768
 
-# define POINT_GAP	30
-
-typedef enum	e_proj_tyoe
-{
-	ISOMETRIC = 0
-}				t_proj_type;
-
-typedef struct	s_mlx_info
-{
-	void		*ptr;
-	void		*win;
-
-	t_proj_type	proj_type;
-}				t_mlx_info;
+# define POINT_GAP		30
+# define POINT_GAP_Z	3
 
 typedef struct	s_point
 {
 	int			x;
 	int			y;
 	int			z;
-	uint16_t	color;
+	uint32_t	color;
 }				t_point;
 
 typedef struct	s_line
@@ -64,18 +53,33 @@ typedef struct	s_wireframe
 	struct s_wireframe	*y_next;
 }				t_wireframe;
 
+typedef struct	s_mlx_info
+{
+	void		*ptr;
+	void		*win;
+
+	t_wireframe	*wireframe;
+
+	t_point		(*proj)(const t_point *p);
+
+	t_point		camera;
+	float		zoom;
+}				t_mlx_info;
+
 t_wireframe		*create_wireframe(t_point *p);
 void			join_wireframes(t_wireframe **w1, t_wireframe *w2,
 	int axis);
-void			transform_wireframe(t_wireframe *w,
-	t_point (*f)(const t_point *p));
+void			set_wireframe_color(t_wireframe *w);
 void			free_wireframe(const t_wireframe *w);
 
 t_wireframe		*read_wireframe(const char *file);
 
 t_point			isometric_projection(const t_point *p);
+t_point			parallel_projection(const t_point *p);
 
 void			draw_line(t_mlx_info *mlx, t_line line);
 void			draw_wireframe(t_mlx_info *mlx, const t_wireframe *w);
+
+int				key_event(int key, void *ptr);
 
 #endif

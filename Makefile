@@ -17,6 +17,7 @@ CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src/
 DIRS := $(shell find src/ -type d)
 SRC =	src/draw.c\
+		src/event.c\
 		src/file.c\
 		src/main.c\
 		src/projection.c\
@@ -30,7 +31,7 @@ OBJ := $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 LIBFT = libft/libft.a
 MINILIBX = minilibx_linux/libmlx.a
 
-LINKS = -lGL -lX11 -lXext # -lmlx -framework OpenGL -framework AppKit
+LINKS = -lGL -lX11 -lXext -lm # -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME) tags
 

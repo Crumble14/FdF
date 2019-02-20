@@ -47,10 +47,11 @@ static t_wireframe	*handle_line(const char *line, int y)
 		return (NULL);
 	w = NULL;
 	point.x = 0;
-	point.y = y * POINT_GAP;
+	point.y = y;
 	while (!is_end(line))
 	{
-		point.z = get_nbr(&line) * POINT_GAP;
+		point.z = get_nbr(&line) * POINT_GAP_Z;
+		point.color = 0xffffff;
 		join_wireframes(&w, create_wireframe(&point), 0);
 		point.x += POINT_GAP;
 	}
@@ -72,7 +73,7 @@ t_wireframe			*read_wireframe(const char *file)
 	{
 		join_wireframes(&w, handle_line(line, y), 1);
 		free((void *)line);
-		++y;
+		y += POINT_GAP;
 	}
 	close(fd);
 	return (w);

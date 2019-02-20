@@ -1,4 +1,5 @@
 #include "fdf.h"
+#include <stdio.h>
 
 t_wireframe	*create_wireframe(t_point *p)
 {
@@ -43,19 +44,40 @@ void		join_wireframes(t_wireframe **w1, t_wireframe *w2, int axis)
 	}
 }
 
-void		transform_wireframe(t_wireframe *w,
-	t_point (*f)(const t_point *p))
+static int	get_highest_z(const t_wireframe *w)
 {
-	t_wireframe *n;
+	int					max_z;
+	const t_wireframe	*n;
 
-	if (!f)
+	max_z = 0;
+	while (w)
+	{
+		n = w;
+		while (n)
+		{
+			if (n->point.z > max_z)
+				max_z = n->point.z;
+			n = n->x_next;
+		}
+		w = w->y_next;
+	}
+	return (max_z);
+}
+
+void		set_wireframe_color(t_wireframe *w)
+{
+	int			max_z;
+	t_wireframe	*n;
+
+	if ((max_z = get_highest_z(w)) <= 0)
 		return ;
 	while (w)
 	{
 		n = w;
 		while (n)
 		{
-			n->point = f(&n->point);
+			n->point.color = 0xff0000;// >> (n->point.z * 20 / max_z);
+			printf("%i\n", n->point.color);
 			n = n->x_next;
 		}
 		w = w->y_next;
@@ -65,14 +87,16 @@ void		transform_wireframe(t_wireframe *w,
 void		free_wireframe(const t_wireframe *w)
 {
 	const t_wireframe *n;
+	const t_wireframe *o;
 
 	while (w)
 	{
 		n = w->x_next;
 		while (n)
 		{
+			o = n;
 			free((void *)n);
-			n = n->x_next; // Accessed to freeed memory
+			n = o->x_next;
 		}
 		n = w->y_next;
 		free((void *)w);
