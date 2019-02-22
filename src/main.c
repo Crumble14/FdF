@@ -47,7 +47,6 @@ int					main(int argc, char **argv)
 		return (-1);
 	info->wireframe = wireframe;
 	mlx_key_hook(info->win, key_event, info);
-	set_wireframe_color(info->wireframe);
 	mlx_clear_window(info->ptr, info->win);
 	render(info);
 	mlx_loop(info->ptr);

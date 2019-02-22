@@ -17,8 +17,6 @@ static void	set_pixel(t_mlx_info *info, t_point *p)
 {
 	if(p->x < 0 || p->y < 0 || p->x > WIN_WIDTH || p->y > WIN_HEIGHT)
 		return ;
-	// TODO
-	//mlx_pixel_put(info->ptr, info->win, p->x, p->y, p->color);
 	mlx_pixel_put(info->ptr, info->win, p->x, p->y, 0xffffff);
 }
 

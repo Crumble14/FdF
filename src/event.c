@@ -1,7 +1,12 @@
 #include "fdf.h"
-#include <stdio.h>
 
-int key_event(int key, void *ptr)
+static inline void	reset(t_mlx_info *info)
+{
+	info->zoom = 1;
+	ft_bzero(&info->camera, sizeof(t_point));
+}
+
+int					key_event(int key, void *ptr)
 {
 	t_mlx_info *info;
 
@@ -24,10 +29,7 @@ int key_event(int key, void *ptr)
 	else if (key == 65364)
 		info->camera.y += 100;
 	else if (key == 114)
-	{
-		info->zoom = 1;
-		ft_bzero(&info->camera, sizeof(t_point));
-	}
+		reset(info);
 	mlx_clear_window(info->ptr, info->win);
 	render(info);
 	return (0);

@@ -53,7 +53,6 @@ static t_wireframe	*handle_line(const char *line, int y)
 	while (!is_end(line))
 	{
 		point.z = get_nbr(&line) * POINT_GAP_Z;
-		point.color = 0xffffff;
 		join_wireframes(&w, create_wireframe(&point), 0);
 		point.x += POINT_GAP;
 	}

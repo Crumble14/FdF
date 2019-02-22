@@ -36,7 +36,6 @@ typedef struct	s_point
 	int			x;
 	int			y;
 	int			z;
-	uint32_t	color;
 }				t_point;
 
 typedef struct	s_line
@@ -69,7 +68,6 @@ typedef struct	s_mlx_info
 t_wireframe		*create_wireframe(t_point *p);
 void			join_wireframes(t_wireframe **w1, t_wireframe *w2,
 	int axis);
-void			set_wireframe_color(t_wireframe *w);
 void			free_wireframe(const t_wireframe *w);
 
 t_wireframe		*read_wireframe(const char *file);
