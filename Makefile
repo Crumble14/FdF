@@ -68,5 +68,6 @@ fclean: clean
 	make clean -C minilibx_linux/
 
 re: fclean all
+	make re -C minilibx_linux/
 
 .PHONY: all clean fclean re

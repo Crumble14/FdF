@@ -1,5 +1,4 @@
 #include "fdf.h"
-#include <stdio.h>
 
 t_wireframe	*create_wireframe(t_point *p)
 {
@@ -76,8 +75,7 @@ void		set_wireframe_color(t_wireframe *w)
 		n = w;
 		while (n)
 		{
-			n->point.color = 0xff0000;// >> (n->point.z * 20 / max_z);
-			printf("%i\n", n->point.color);
+			n->point.color = 0xff0000 >> (n->point.z * 20 / max_z);
 			n = n->x_next;
 		}
 		w = w->y_next;
