@@ -1,4 +1,5 @@
 #include "fdf.h"
+#include <stdio.h>
 
 int key_event(int key, void *ptr)
 {
@@ -10,9 +11,9 @@ int key_event(int key, void *ptr)
 	else if (key == 32)
 		info->proj = (info->proj == isometric_projection
 			? parallel_projection : isometric_projection);
-	else if (key == 61 || key == 65451)
+	else if ((key == 61 || key == 65451) && info->zoom < 256)
 		info->zoom *= 2;
-	else if (key == 45 || key == 65453)
+	else if ((key == 45 || key == 65453) && info->zoom > 1)
 		info->zoom /= 2;
 	else if (key == 65361)
 		info->camera.x -= 100;
@@ -28,6 +29,6 @@ int key_event(int key, void *ptr)
 		ft_bzero(&info->camera, sizeof(t_point));
 	}
 	mlx_clear_window(info->ptr, info->win);
-	draw_wireframe(info, info->wireframe);
+	render(info);
 	return (0);
 }

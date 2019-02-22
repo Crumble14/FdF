@@ -79,6 +79,7 @@ t_point			parallel_projection(const t_point *p);
 
 void			draw_line(t_mlx_info *mlx, t_line line);
 void			draw_wireframe(t_mlx_info *mlx, const t_wireframe *w);
+void			render(t_mlx_info *info);
 
 int				key_event(int key, void *ptr);
 

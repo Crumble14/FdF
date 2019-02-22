@@ -44,11 +44,12 @@ int					main(int argc, char **argv)
 	++argv;
 	if (argc <= 0 || !(wireframe = read_wireframe(*argv))
 		|| !(info = open_window()))
-		return (0);
+		return (-1);
 	info->wireframe = wireframe;
-	set_wireframe_color(info->wireframe);
-	draw_wireframe(info, info->wireframe);
 	mlx_key_hook(info->win, key_event, info);
+	set_wireframe_color(info->wireframe);
+	mlx_clear_window(info->ptr, info->win);
+	render(info);
 	mlx_loop(info->ptr);
 	close_window(info);
 	return (0);

@@ -29,6 +29,8 @@ static int			get_nbr(const char **str)
 	neg = (**str == '-');
 	if (**str == '+' || **str == '-')
 		++(*str);
+	if (**str < '0' || **str > '9')
+		exit(-1);
 	n = 0;
 	while (**str >= '0' && **str <= '9')
 	{

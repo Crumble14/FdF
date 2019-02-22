@@ -11,9 +11,12 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 static void	set_pixel(t_mlx_info *info, t_point *p)
 {
+	if(p->x < 0 || p->y < 0 || p->x > WIN_WIDTH || p->y > WIN_HEIGHT)
+		return ;
 	// TODO
 	//mlx_pixel_put(info->ptr, info->win, p->x, p->y, p->color);
 	mlx_pixel_put(info->ptr, info->win, p->x, p->y, 0xffffff);
@@ -224,10 +227,10 @@ void		draw_line(t_mlx_info *info, t_line line)
 	int dx;
 	int dy;
 
-	line.p1.x = (line.p1.x * info->zoom) - info->camera.x;
-	line.p1.y = (line.p1.y * info->zoom) - info->camera.y;
-	line.p2.x = (line.p2.x * info->zoom) - info->camera.x;
-	line.p2.y = (line.p2.y * info->zoom) - info->camera.y;
+	line.p1.x = (line.p1.x * (info->zoom / 10)) - info->camera.x;
+	line.p1.y = (line.p1.y * (info->zoom / 10)) - info->camera.y;
+	line.p2.x = (line.p2.x * (info->zoom / 10)) - info->camera.x;
+	line.p2.y = (line.p2.y * (info->zoom / 10)) - info->camera.y;
 	if (!info)
 		return ;
 	if (!(dx = line.p2.x - line.p1.x))
@@ -279,4 +282,17 @@ void		draw_wireframe(t_mlx_info *info, const t_wireframe *w)
 		}
 		w = w->y_next;
 	}
+}
+
+void		render(t_mlx_info *info)
+{
+	mlx_string_put(info->ptr, info->win, 0, 10, 0xffffff,
+		"Arrows: Move around");
+	mlx_string_put(info->ptr, info->win, 0, 20, 0xffffff,
+		"Space: Switch projection");
+	mlx_string_put(info->ptr, info->win, 0, 30, 0xffffff,
+		"R: Reset camera");
+	mlx_string_put(info->ptr, info->win, 0, 40, 0xffffff,
+		"+/-: Zoom");
+	draw_wireframe(info, info->wireframe);
 }
