@@ -1,11 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   projection.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/25 17:28:29 by llenotre          #+#    #+#             */
+/*   Updated: 2019/02/25 17:42:30 by llenotre         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-static inline double	to_rad(double deg)
-{
-	return (deg * M_PI / 180.0);
-}
-
-static t_point rotate_x(const t_point *point, const float angle)
+static t_point	rotate_x(const t_point *point, const float angle)
 {
 	t_point p;
 
@@ -15,7 +22,7 @@ static t_point rotate_x(const t_point *point, const float angle)
 	return (p);
 }
 
-static t_point rotate_y(const t_point *point, const float angle)
+static t_point	rotate_y(const t_point *point, const float angle)
 {
 	t_point p;
 
@@ -25,7 +32,7 @@ static t_point rotate_y(const t_point *point, const float angle)
 	return (p);
 }
 
-static t_point rotate_z(const t_point *point, const float angle)
+static t_point	rotate_z(const t_point *point, const float angle)
 {
 	t_point p;
 
@@ -35,25 +42,24 @@ static t_point rotate_z(const t_point *point, const float angle)
 	return (p);
 }
 
-t_point					isometric_projection(const t_point *p)
+t_point			isometric_projection(const t_point *p)
 {
 	t_point sp;
 
 	sp = *p;
-	sp = rotate_z(&sp, to_rad(45));
-	sp = rotate_x(&sp, to_rad(35.264));
+	sp = rotate_z(&sp, ft_dtor(45));
+	sp = rotate_x(&sp, ft_dtor(35.264));
 	sp.z = 0;
 	return (sp);
 }
 
-t_point					parallel_projection(const t_point *p)
+t_point			parallel_projection(const t_point *p)
 {
 	t_point sp;
 
 	sp = *p;
-	sp = rotate_x(&sp, to_rad(45));
-	sp = rotate_y(&sp, to_rad(-20));
-	//sp = rotate_z(&sp, to_rad(45));
+	sp = rotate_x(&sp, ft_dtor(45));
+	sp = rotate_y(&sp, ft_dtor(-20));
 	sp.z = 0;
 	return (sp);
 }

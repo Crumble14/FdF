@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   event.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/02/25 17:28:21 by llenotre          #+#    #+#             */
+/*   Updated: 2019/02/25 18:47:19 by llenotre         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 static inline void	reset(t_mlx_info *info)
@@ -11,24 +23,24 @@ int					key_event(int key, void *ptr)
 	t_mlx_info *info;
 
 	info = (t_mlx_info *)ptr;
-	if (key == 65307)
+	if (key == ESC_KEY)
 		exit(0);
-	else if (key == 32)
+	else if (key == SPACE_KEY)
 		info->proj = (info->proj == isometric_projection
 			? parallel_projection : isometric_projection);
-	else if ((key == 61 || key == 65451) && info->zoom < 256)
+	else if ((key == PLUS_KEY || key == NUM_PLUS_KEY) && info->zoom < 256)
 		info->zoom *= 2;
-	else if ((key == 45 || key == 65453) && info->zoom > 1)
+	else if ((key == MINUS_KEY || key == NUM_MINUS_KEY) && info->zoom > 1)
 		info->zoom /= 2;
-	else if (key == 65361)
+	else if (key == ARROW_RIGHT_KEY)
 		info->camera.x -= 100;
-	else if (key == 65363)
+	else if (key == ARROW_LEFT_KEY)
 		info->camera.x += 100;
-	else if (key == 65362)
+	else if (key == ARROW_DOWN_KEY)
 		info->camera.y -= 100;
-	else if (key == 65364)
+	else if (key == ARROW_UP_KEY)
 		info->camera.y += 100;
-	else if (key == 114)
+	else if (key == R_KEY)
 		reset(info);
 	mlx_clear_window(info->ptr, info->win);
 	render(info);

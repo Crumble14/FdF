@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_rtod.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/07 17:55:41 by llenotre          #+#    #+#             */
-/*   Updated: 2019/01/30 16:59:59 by llenotre         ###   ########.fr       */
+/*   Created: 2019/02/25 17:33:06 by llenotre          #+#    #+#             */
+/*   Updated: 2019/02/25 17:37:10 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+double	ft_rtod(const double n)
 {
-	if (!s)
-		return (NULL);
-	while (*s)
-	{
-		if (*s == c)
-			return ((char*)s);
-		++s;
-	}
-	return (c == '\0' ? (char*)s : NULL);
+	return (n * 180.0 / M_PI);
 }

@@ -6,7 +6,7 @@
 #    By: llenotre <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/13 20:17:20 by llenotre          #+#    #+#              #
-#    Updated: 2019/01/30 15:46:17 by llenotre         ###   ########.fr        #
+#    Updated: 2019/02/25 17:35:56 by llenotre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC =	ft_arrdup.c\
 		ft_arrfree.c\
 		ft_atoi.c\
 		ft_bzero.c\
+		ft_dtor.c\
 		ft_factorial.c\
 		ft_fibonacci.c\
 		ft_get_filename.c\
@@ -65,6 +66,7 @@ SRC =	ft_arrdup.c\
 		ft_putnbr_fd.c\
 		ft_putstr.c\
 		ft_putstr_fd.c\
+		ft_rtod.c\
 		ft_sort.c\
 		ft_sqrt.c\
 		ft_strcat.c\

@@ -6,7 +6,7 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:12:45 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/14 14:22:51 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/25 19:02:37 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,32 @@
 
 # define POINT_GAP		30
 # define POINT_GAP_Z	3
+
+# ifdef __linux__
+#  define ESC_KEY			65307
+#  define SPACE_KEY			32
+#  define PLUS_KEY			61
+#  define NUM_PLUS_KEY		65451
+#  define MINUS_KEY			45
+#  define NUM_MINUS_KEY		65453
+#  define ARROW_UP_KEY		65361
+#  define ARROW_LEFT_KEY	65362
+#  define ARROW_DOWN_KEY	65363
+#  define ARROW_RIGHT_KEY	65364
+#  define R_KEY				114
+# else
+#  define ESC_KEY			65307
+#  define SPACE_KEY			49
+#  define PLUS_KEY			24
+#  define NUM_PLUS_KEY		69
+#  define MINUS_KEY			27
+#  define NUM_MINUS_KEY		78
+#  define ARROW_UP_KEY		126
+#  define ARROW_LEFT_KEY	123
+#  define ARROW_DOWN_KEY	125
+#  define ARROW_RIGHT_KEY	124
+#  define R_KEY				15
+# endif
 
 typedef struct	s_point
 {
@@ -78,6 +104,15 @@ t_point			parallel_projection(const t_point *p);
 void			draw_line(t_mlx_info *mlx, t_line line);
 void			draw_wireframe(t_mlx_info *mlx, const t_wireframe *w);
 void			render(t_mlx_info *info);
+
+void			bresenham_quadrant1(t_mlx_info *info, t_line *line,
+	int dx, int dy);
+void			bresenham_quadrant2(t_mlx_info *info, t_line *line,
+	int dx, int dy);
+void			bresenham_quadrant3(t_mlx_info *info, t_line *line,
+	int dx, int dy);
+void			bresenham_quadrant4(t_mlx_info *info, t_line *line,
+	int dx, int dy);
 
 int				key_event(int key, void *ptr);
 

@@ -6,13 +6,14 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 17:22:32 by llenotre          #+#    #+#             */
-/*   Updated: 2019/01/30 16:25:05 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/25 17:36:24 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <math.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -118,6 +119,9 @@ t_bool			ft_match(const char *str, const char *pattern);
 
 char			*ft_get_filename(const char *path);
 char			*ft_path_merge(const char *p1, const char *p2);
+
+double			ft_dtor(const double n);
+double			ft_rtod(const double n);
 
 typedef struct	s_list
 {
