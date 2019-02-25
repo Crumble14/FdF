@@ -67,7 +67,7 @@ typedef struct	s_mlx_info
 
 t_wireframe		*create_wireframe(t_point *p);
 void			join_wireframes(t_wireframe **w1, t_wireframe *w2,
-	int axis);
+	const int axis);
 void			free_wireframe(const t_wireframe *w);
 
 t_wireframe		*read_wireframe(const char *file);

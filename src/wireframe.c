@@ -14,7 +14,7 @@ t_wireframe	*create_wireframe(t_point *p)
 	return (w);
 }
 
-void		join_wireframes(t_wireframe **w1, t_wireframe *w2, int axis)
+void		join_wireframes(t_wireframe **w1, t_wireframe *w2, const int axis)
 {
 	t_wireframe *w;
 

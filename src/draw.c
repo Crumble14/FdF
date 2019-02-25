@@ -225,10 +225,10 @@ void		draw_line(t_mlx_info *info, t_line line)
 	int dx;
 	int dy;
 
-	line.p1.x = (line.p1.x * (info->zoom / 10)) - info->camera.x;
-	line.p1.y = (line.p1.y * (info->zoom / 10)) - info->camera.y;
-	line.p2.x = (line.p2.x * (info->zoom / 10)) - info->camera.x;
-	line.p2.y = (line.p2.y * (info->zoom / 10)) - info->camera.y;
+	line.p1.x = (line.p1.x * (float)(info->zoom / 10)) - info->camera.x;
+	line.p1.y = (line.p1.y * (float)(info->zoom / 10)) - info->camera.y;
+	line.p2.x = (line.p2.x * (float)(info->zoom / 10)) - info->camera.x;
+	line.p2.y = (line.p2.y * (float)(info->zoom / 10)) - info->camera.y;
 	if (!info)
 		return ;
 	if (!(dx = line.p2.x - line.p1.x))
