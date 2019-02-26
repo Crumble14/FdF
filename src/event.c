@@ -6,7 +6,7 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 17:28:21 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/25 18:47:19 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/26 16:35:00 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,9 @@ int					key_event(int key, void *ptr)
 	mlx_clear_window(info->ptr, info->win);
 	render(info);
 	return (0);
+}
+
+int					close_event(void)
+{
+	exit(0);
 }

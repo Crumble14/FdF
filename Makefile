@@ -6,7 +6,7 @@
 #    By: llenotre <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/13 17:11:46 by llenotre          #+#    #+#              #
-#    Updated: 2019/02/25 19:03:11 by llenotre         ###   ########.fr        #
+#    Updated: 2019/02/26 16:52:29 by llenotre         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,10 @@ CFLAGS = -Wall -Wextra -Werror
 SRC_DIR = src/
 DIRS := $(shell find src/ -type d)
 SRC =	src/bresenham.c\
+		src/bresenham1.c\
+		src/bresenham2.c\
+		src/bresenham3.c\
+		src/bresenham4.c\
 		src/draw.c\
 		src/event.c\
 		src/file.c\
@@ -80,6 +84,5 @@ fclean: clean
 	make fclean -C libft/
 
 re: fclean all
-	make re -C $(MINILIBX_DIR)
 
 .PHONY: all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:12:45 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/25 19:02:37 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/26 16:50:36 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,10 @@ void			bresenham_quadrant3(t_mlx_info *info, t_line *line,
 	int dx, int dy);
 void			bresenham_quadrant4(t_mlx_info *info, t_line *line,
 	int dx, int dy);
+void			bresenham_vertical(t_mlx_info *info, t_line *line);
+void			bresenham_horizontal(t_mlx_info *info, t_line *line);
 
 int				key_event(int key, void *ptr);
+int				close_event(void);
 
 #endif

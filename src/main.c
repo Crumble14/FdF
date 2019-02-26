@@ -6,7 +6,7 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:15:38 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/25 18:21:03 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/26 16:32:38 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int					main(int argc, char **argv)
 		return (-1);
 	info->wireframe = wireframe;
 	mlx_key_hook(info->win, key_event, info);
+	mlx_hook(info->win, 17, 0, close_event, NULL);
 	mlx_clear_window(info->ptr, info->win);
 	render(info);
 	mlx_loop(info->ptr);
