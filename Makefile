@@ -40,7 +40,11 @@ endif
 LIBFT = libft/libft.a
 MINILIBX = $(MINILIBX_DIR)/libmlx.a
 
-LINKS = -lmlx -framework OpenGL -framework AppKit # -lGL -lX11 -lXext -lm
+ifeq ($(OS), Linux)
+LINKS = -lGL -lX11 -lXext -lm
+else
+LINKS = -lmlx -framework OpenGL -framework AppKit
+endif
 
 all: $(NAME) tags
 

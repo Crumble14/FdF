@@ -31,30 +31,30 @@
 # define POINT_GAP		30
 # define POINT_GAP_Z	3
 
-# ifdef __linux__
-#  define ESC_KEY			65307
-#  define SPACE_KEY			32
-#  define PLUS_KEY			61
-#  define NUM_PLUS_KEY		65451
-#  define MINUS_KEY			45
-#  define NUM_MINUS_KEY		65453
-#  define ARROW_UP_KEY		65361
-#  define ARROW_LEFT_KEY	65362
-#  define ARROW_DOWN_KEY	65363
-#  define ARROW_RIGHT_KEY	65364
-#  define R_KEY				114
-# else
+# ifdef __APPLE__
 #  define ESC_KEY			65307
 #  define SPACE_KEY			49
 #  define PLUS_KEY			24
 #  define NUM_PLUS_KEY		69
 #  define MINUS_KEY			27
 #  define NUM_MINUS_KEY		78
-#  define ARROW_UP_KEY		126
-#  define ARROW_LEFT_KEY	123
-#  define ARROW_DOWN_KEY	125
-#  define ARROW_RIGHT_KEY	124
+#  define ARROW_UP_KEY		125
+#  define ARROW_LEFT_KEY	124
+#  define ARROW_DOWN_KEY	126
+#  define ARROW_RIGHT_KEY	123
 #  define R_KEY				15
+# else
+#  define ESC_KEY			65307
+#  define SPACE_KEY			32
+#  define PLUS_KEY			61
+#  define NUM_PLUS_KEY		65451
+#  define MINUS_KEY			45
+#  define NUM_MINUS_KEY		65453
+#  define ARROW_UP_KEY		65364
+#  define ARROW_LEFT_KEY	65363
+#  define ARROW_DOWN_KEY	65362
+#  define ARROW_RIGHT_KEY	65361
+#  define R_KEY				114
 # endif
 
 typedef struct	s_point
