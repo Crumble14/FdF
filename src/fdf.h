@@ -6,7 +6,7 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:12:45 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/26 16:50:36 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/27 18:48:51 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define POINT_GAP_Z	3
 
 # ifdef __APPLE__
-#  define ESC_KEY			65307
+#  define ESC_KEY			53
 #  define SPACE_KEY			49
 #  define PLUS_KEY			24
 #  define NUM_PLUS_KEY		69
