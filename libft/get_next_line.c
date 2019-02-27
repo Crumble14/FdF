@@ -73,13 +73,9 @@ int			get_next_line(const int fd, char **line)
 {
 	static char	*tmp = NULL;
 
-	if (line == NULL || fd < 0 || read(fd, NULL, 0) < 0)
+	if (!line || fd < 0 || read(fd, NULL, 0) < 0)
 		return (-1);
-	if (!(*line = ft_strnew(0)))
-	{
-		*line = NULL;
-		return (-1);
-	}
+	*line = NULL;
 	if (!tmp && !(tmp = ft_strnew(0)))
 		return (-1);
 	if (!ft_strchr(tmp, '\n'))
