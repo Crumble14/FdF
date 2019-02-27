@@ -6,12 +6,11 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:15:38 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/26 16:32:38 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/27 19:47:12 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 static t_mlx_info	*open_window(void)
 {
