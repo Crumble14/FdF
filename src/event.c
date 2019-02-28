@@ -6,7 +6,7 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/25 17:28:21 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/26 16:35:00 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/28 19:37:43 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int					key_event(int key, void *ptr)
 	else if (key == SPACE_KEY)
 		info->proj = (info->proj == isometric_projection
 			? parallel_projection : isometric_projection);
-	else if ((key == PLUS_KEY || key == NUM_PLUS_KEY) && info->zoom < 256)
+	else if ((key == PLUS_KEY || key == NUM_PLUS_KEY) && info->zoom < 64)
 		info->zoom *= 2;
 	else if ((key == MINUS_KEY || key == NUM_MINUS_KEY) && info->zoom > 1)
 		info->zoom /= 2;
