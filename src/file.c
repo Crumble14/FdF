@@ -6,11 +6,12 @@
 /*   By: llenotre <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/13 17:57:45 by llenotre          #+#    #+#             */
-/*   Updated: 2019/02/13 18:44:42 by llenotre         ###   ########.fr       */
+/*   Updated: 2019/02/28 19:59:50 by llenotre         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <stdio.h>
 
 static t_bool		is_end(const char *str)
 {
@@ -19,23 +20,41 @@ static t_bool		is_end(const char *str)
 	return (!(*str));
 }
 
+static int			get_char_val(const char c)
+{
+	if (c >= '0' && c <= '9')
+		return (c - '0');
+	else if (c >= 'a' && c <= 'f')
+		return (c - 'a' + 10);
+	else if (c >= 'A' && c <= 'F')
+		return (c - 'A' + 10);
+	return (0);
+}
+
 static int			get_nbr(const char **str)
 {
 	long	n;
 	char	neg;
+	char	hexa;
 
 	while (**str && ft_isspace(**str))
 		++(*str);
 	neg = (**str == '-');
 	if (**str == '+' || **str == '-')
 		++(*str);
-	if (**str < '0' || **str > '9')
+	hexa = (ft_strlen(*str) >= 2 && (*str)[0] == '0' && (*str)[1] == 'x');
+	if (hexa)
+		(*str) += 2;
+	printf("%s\n", *str);
+	if (!((**str >= '0' && **str <= '9') || (**str >= 'a' && **str <= 'f')
+		|| (**str >= 'A' && **str <= 'F')))
 		exit(-1);
 	n = 0;
-	while (**str >= '0' && **str <= '9')
+	while ((**str >= '0' && **str <= '9') || (**str >= 'a' && **str <= 'f')
+		|| (**str >= 'A' && **str <= 'F'))
 	{
-		n *= 10;
-		n += *((*str)++) - '0';
+		n *= (hexa ? 16 : 10);
+		n += get_char_val(*((*str)++));
 	}
 	return (neg ? -n : n);
 }
