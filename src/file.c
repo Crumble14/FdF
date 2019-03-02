@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 static t_bool		is_end(const char *str)
 {
@@ -45,7 +44,6 @@ static int			get_nbr(const char **str)
 	hexa = (ft_strlen(*str) >= 2 && (*str)[0] == '0' && (*str)[1] == 'x');
 	if (hexa)
 		(*str) += 2;
-	printf("%s\n", *str);
 	if (!((**str >= '0' && **str <= '9') || (**str >= 'a' && **str <= 'f')
 		|| (**str >= 'A' && **str <= 'F')))
 		exit(-1);

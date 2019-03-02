@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 void		draw_line(t_mlx_info *info, t_line line)
 {
